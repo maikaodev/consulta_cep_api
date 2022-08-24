@@ -1,0 +1,20 @@
+{
+  "name": "api_consula_cep",
+  "version": "1.0.0",
+  "description": "API consulta CEP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server.js"
+  },
+  "author": "maikaodev",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
