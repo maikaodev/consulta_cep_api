@@ -19,14 +19,17 @@ app.get("/cep/:id", async (req, res) => {
 
   try {
     const { data } = await api.get(`${id}/json`);
-    return res.status(200).send({
+    if (data.erro) {
+      throw new Error();
+    }
+    res.status(200).json({
       cep: data.cep,
       logradouro: data.logradouro,
       localidade: data.localidade,
       uf: data.uf,
     });
   } catch (error) {
-    return res.status(406).json({ mensagem: "Digite um CEP válido!" });
+    return res.status(406).send({ mensagem: "Digite um CEP válido!" });
   }
 });
 
