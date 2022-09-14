@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Configurando para JSON
 app.use(cors("*"));
@@ -31,10 +30,4 @@ app.get("/cep/:id", async (req, res) => {
 });
 
 // Porta
-
-app.listen(port, (error) => {
-  if (error) {
-    console.log(error);
-  }
-  console.log(`app running at http://localhost:${port}`);
-});
+module.exports = app;
