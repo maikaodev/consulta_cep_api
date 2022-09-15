@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("./server");
+const app = require("../server");
 
 describe("Test my app server", () => {
   it("should get main route", async () => {
@@ -17,7 +17,6 @@ describe("Test my app server", () => {
     expect(res.statusCode).toEqual(200);
     expect(res.charset).toEqual("utf-8");
     expect(res.type).toEqual("application/json");
-
     expect(res.header).toHaveProperty("access-control-allow-origin");
     expect(res.header).toHaveProperty("content-type");
 
@@ -25,5 +24,18 @@ describe("Test my app server", () => {
     expect(res.body).toHaveProperty("logradouro");
     expect(res.body).toHaveProperty("localidade");
     expect(res.body).toHaveProperty("uf");
+  });
+  it("should be a valida zip code", async () => {
+    const res = await request(app).get("/cep/12345678");
+
+    expect(res.statusCode).toEqual(406);
+    expect(res.body).toHaveProperty("mensagem");
+    expect(res.body.mensagem).toEqual("Digite um CEP válido!");
+  });
+
+  it("should be a valid route", async () => {
+    const res = await request(app).get("/anything");
+
+    expect(res.redirect).toBe(true);
   });
 });
