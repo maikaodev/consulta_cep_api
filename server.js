@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.status(200).send({ author: "Maikaodev", route: "cep/123456789" });
 });
 
+app.get("/:any", (req, res) => {
+  res.redirect("/");
+});
+
 app.get("/cep/:id", async (req, res) => {
   const { id } = req.params;
 
