@@ -29,7 +29,7 @@ $ cd _api_consulta_cep
 $ yarn install
 
 # Execute a aplicação em modo de desenvolvimento
-$ yarn start
+$ yarn dev
 
 # E o servidor iniciará: - acesse <http://localhost:3000>
 ```
