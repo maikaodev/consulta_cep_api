@@ -13,10 +13,6 @@ app.get("/", (req, res) => {
   res.status(200).send({ author: "Maikaodev", route: "cep/123456789" });
 });
 
-app.get("/:any", (req, res) => {
-  res.redirect("/");
-});
-
 app.get("/cep/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -34,6 +30,12 @@ app.get("/cep/:id", async (req, res) => {
   } catch (error) {
     return res.status(406).send({ mensagem: "Digite um CEP válido!" });
   }
+});
+
+// Redirecionamento para rotas inexistentes.
+
+app.all("*", (req, res) => {
+  res.redirect("/");
 });
 
 // Porta
