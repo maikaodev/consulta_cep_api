@@ -43,7 +43,7 @@ https://www.linkedin.com/in/maikaodev/
 
 ### Descrição
 
-- API criada para desenvolver um [projeto](https://github.com/maikaodev/consulta_cep) para consultar CEP. API criada a partir de outra API.
+- API criada para desenvolver um [projeto](https://github.com/maikaodev/consulta_cep) para consultar CEP. API foi desenvolvida a partir de um outro [endpoint](https://viacep.com.br/ws/04571010/json/). O objetivo de criar esse endpoint intermediário é trazer apenas os dados que vão ser utilizados no meu [frontend](https://github.com/maikaodev/consulta_cep). Em caso de requisições de CEPS inválidos é retornado um erro com status code 406. É tratado também o redirecionamento em casos de endpoints inexistentes.
 
 ### Aprendizado
 
