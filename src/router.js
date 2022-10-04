@@ -1,19 +1,19 @@
-const api = require("./api");
+const api = require("./API/api");
 const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const app = express();
-
-// Configurando para JSON
-app.use(cors("*"));
-app.use(bodyParser.json());
+const router = express.Router();
 
 // Rotas
-app.get("/", (req, res) => {
-  res.status(200).send({ author: "Maikaodev", route: "cep/123456789" });
+router.get("/v1", (req, res) => {
+  res.status(200).send({
+    author: "Maikaodev",
+    description:
+      "Rota desenvolvida a partir de outro endpoint, cujo o objetivo é reduzir a quantidade de dados para facilitar meu frontend",
+    route: "/v1/cep/123456789",
+    version: "1.0.0",
+  });
 });
 
-app.get("/cep/:id", async (req, res) => {
+router.get("/v1/cep/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -34,9 +34,9 @@ app.get("/cep/:id", async (req, res) => {
 
 // Redirecionamento para rotas inexistentes.
 
-app.all("*", (req, res) => {
-  res.redirect("/");
+router.all("*", (req, res) => {
+  res.redirect("/v1");
 });
 
 // Porta
-module.exports = app;
+module.exports = router;

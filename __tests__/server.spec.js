@@ -1,18 +1,16 @@
 const request = require("supertest");
-const app = require("../server");
+const app = require("../src/server");
 
 describe("Test my app server", () => {
   it("should get main route", async () => {
-    const res = await request(app).get("/");
+    const res = await request(app).get("/v1");
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("author");
     expect(res.body).toHaveProperty("route");
   });
   it("should get address information", async () => {
-    const res = await request(app).get("/cep/57015040");
-
-    console.log(res);
+    const res = await request(app).get("/v1/cep/57015040");
 
     expect(res.statusCode).toEqual(200);
     expect(res.charset).toEqual("utf-8");
@@ -26,7 +24,7 @@ describe("Test my app server", () => {
     expect(res.body).toHaveProperty("uf");
   });
   it("should be a valida zip code", async () => {
-    const res = await request(app).get("/cep/12345678");
+    const res = await request(app).get("/v1/cep/12345678");
 
     expect(res.statusCode).toEqual(406);
     expect(res.body).toHaveProperty("mensagem");
