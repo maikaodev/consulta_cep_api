@@ -2,9 +2,9 @@
   "name": "api_consula_cep",
   "version": "1.0.0",
   "description": "API consulta CEP",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node src/server",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "jest"
   },
