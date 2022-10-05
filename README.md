@@ -35,7 +35,7 @@ $ yarn dev
 ```
 
 ### Deploy
-https://api-consulta-cep.herokuapp.com/
+https://api-consulta-cep.herokuapp.com/v1
 
 ### Linkedin
 
